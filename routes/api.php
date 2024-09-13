@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -17,13 +18,19 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::get('/employees', [EmployeeController::class, 'index']);
-Route::post('/employees', [EmployeeController::class, 'store']);
 
-// Route::middleware('auth:api')->group(function () {
-//     Route::post('/employees/store', [EmployeeController::class, 'store']);
-//     Route::get('/employees', [EmployeeController::class, 'index']);
-// });
+
+
+// Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:api')->group(function () {
+    Route::get('/employees', [EmployeeController::class, 'index']);
+    Route::post('/employees', [EmployeeController::class, 'store']);
+
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+});
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

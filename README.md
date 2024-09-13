@@ -5,7 +5,9 @@
 2. Setting .env
 3. php artisan key:generate
 4. php artisan migrate
-5. php artisan serve --port=9001
+5. php artisan db:seed
+6. php artisan serve --port=9001
+
 
 
 ## Endpoint
